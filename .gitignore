@@ -1,3 +1,35 @@
 __pycache__/
 *.pyc
 trainer/test_trainer.py
+
+# 排除所有大文件和数据目录
+tailornet_data/
+tailornet_weights/
+results.json
+
+# 排除所有numpy文件
+*.npy
+
+# 排除所有模型权重文件
+*.pth
+*.pth.tar
+*.pkl
+*.h5
+*.ckpt
+
+# 排除所有大于10MB的文件（需要手动检查）
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# 排除临时文件
+*.tmp
+*.temp
+*.log
+
+# 排除系统文件
+.DS_Store
+Thumbs.db
+*.Identifier

@@ -45,6 +45,11 @@ scipy
 
 Code works with psbody.mesh v0.4 , pytorch >= v1.0 , chumpy v0.7 and scipy v1.3 .
 
+## Data Download
+Due to the large size of the data files (approximately 32GB), they are not included in this repository. Please download them separately:
+
+📥 **[Download Data and Models](./DATA_DOWNLOAD.md)** - Instructions for downloading all required data files and pre-trained models.
+
 ## How to Run
 - Download and prepare SMPL model and TailorNet data from [dataset repository](https://github.com/zycliao/TailorNet_dataset).
 - Set DATA_DIR and SMPL paths in `global_var.py` file accordingly.

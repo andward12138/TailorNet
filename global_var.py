@@ -1,20 +1,24 @@
 import os
 
+# Root directory of the TailorNet project (where this file is located)
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Dataset root directory. Change it to point to downloaded data root directory.
-DATA_DIR = '/BS/cloth-anim/static00/tailor_data'
+# Dataset root directory (correct absolute path)
+DATA_DIR = '/home/kangdong/TailorNet/tailornet_data'
 
-# Set the paths to SMPL model
-SMPL_PATH_NEUTRAL = '/BS/RVH/work/data/smpl_models/neutral/basicModel_neutral_lbs_10_207_0_v1.0.0.pkl'
-SMPL_PATH_MALE = '/BS/RVH/work/data/smpl_models/lrotmin/lbs_tj10smooth6_0fixed_normalized/male/model.pkl'
-SMPL_PATH_FEMALE = '/BS/RVH/work/data/smpl_models/lrotmin/lbs_tj10smooth6_0fixed_normalized/female/model.pkl'
+# Set the paths to SMPL 1.1.0 models (correct absolute paths, match case with directory)
+SMPL_PATH_NEUTRAL = '/home/kangdong/TailorNet/tailornet_data/smpl/basicmodel_neutral_lbs_10_207_0_v1.1.0.pkl'
+SMPL_PATH_MALE = '/home/kangdong/TailorNet/tailornet_data/smpl/basicmodel_m_lbs_10_207_0_v1.1.0.pkl'
+SMPL_PATH_FEMALE = '/home/kangdong/TailorNet/tailornet_data/smpl/basicmodel_f_lbs_10_207_0_v1.1.0.pkl'
 
-# Log directory where training logs, checkpoints and visualizations will be stored
+# Log directory (used for training logs, but not needed for inference; keep as is)
 LOG_DIR = '/BS/cpatel/work/data/learn_anim'
 
-# Downloaded TailorNet trained models' path
-MODEL_WEIGHTS_PATH = "/BS/cpatel/work/data/learn_anim"
+# Path to downloaded TailorNet pre-trained models (absolute path, assuming same structure)
+MODEL_WEIGHTS_PATH = "/home/kangdong/TailorNet/tailornet_weights"
+
+# Output directory for inference results (absolute path)
+OUTPUT_PATH = "/home/kangdong/TailorNet/tailornet_output"
 
 # --------------------------------------------------------------------
 # Variables below hardly need to change
@@ -23,55 +27,20 @@ MODEL_WEIGHTS_PATH = "/BS/cpatel/work/data/learn_anim"
 # Available genders
 GENDERS = ['neutral', 'male', 'female']
 
-# This file in DATA_DIR contains pose indices (out of all SMPL poses) of
-# train/test splits as a dict {'train': <train_indices>, 'test': <test_indices>}
+# File in DATA_DIR containing pose indices for train/test splits
 POSE_SPLIT_FILE = 'split_static_pose_shape.npz'
 
-# This file in DATA_DIR contains garment template information in format
-# { <garment_class>: {'vert_indices': <vert_indices>, 'f': <faces>} }
-# where <vert_indices> refers to the indices of high_resolution SMPL
-# template which make <garment_class> garment
+# File in DATA_DIR containing garment template information
 GAR_INFO_FILE = 'garment_class_info.pkl'
 
-# Root dir for smooth data. Groundtruth smooth data is stored in the same
-# data hierarchy as simulation data under this directory.
+# Root dir for smooth data (keep as DATA_DIR since you are using pre-trained models)
 SMOOTH_DATA_DIR = DATA_DIR
 
-# Indicates that smooth groundtruth data is available or not. If False, smoothing
-# will be performed during the training which might slow down the training significantly.
+# Indicates that smooth groundtruth data is available (keep True for inference)
 SMOOTH_STORED = True
 
-# Using smoothing in posed space for skirt
+# Using smoothing in posed space for skirt (keep True as per your requirement)
 POSED_SMOOTH_SKIRT = True
-
-"""
-## SMPL joint
-ID  parent  name
-0   -1      pelvis
-1   0       L hip
-2   0       R hip
-3   0       stomach
-4   1       L knee
-5   2       R knee
-6   3       Lower chest
-7   4       L ankle
-8   5       R ankle
-9   6       Upper chest
-10  7       L toe
-11  8       R toe
-12  9       throat
-13  9       L Breast
-14  9       R Breast
-15  12      jaw
-16  13      L shoulder
-17  14      R shoulder
-18  16      L elbow
-19  17      R elbow
-20  18      L wrist
-21  19      R wrist
-22  20      L hand
-23  21      R hand
-"""
 
 # Lists the indices of joints which affect the deformations of particular garment
 VALID_THETA = {

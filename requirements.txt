@@ -1,0 +1,22 @@
+# TailorNet基本依赖
+chumpy==0.70
+matplotlib==3.3.4
+numpy==1.19.5
+opencv-python==4.11.0.86
+Pillow==8.4.0
+psbody-mesh==0.4
+PyOpenGL==3.1.9
+scipy==1.5.4
+torch==1.10.0
+torchvision==0.11.0
+
+# HybrIK集成所需依赖
+requests>=2.25.0
+scipy>=1.5.4
+# TailorNet中已包含numpy
+
+# 用于旋转矩阵到轴角转换
+scipy>=1.5.4
+
+# 命令行参数解析
+argparse>=1.4.0 
